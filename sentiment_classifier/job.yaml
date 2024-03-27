@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: my-training-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: my-training-job
+        image: k3d-registry.localhost:5050/my_training_job:latest
+        command: ["python", "train.py"]
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Never
